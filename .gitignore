@@ -1,3 +1,14 @@
 **/obj/*
 **/.vs/*
 **/bin/*
+
+/*/*/obj/*
+/*/*/bin/*
+.idea
+/.vs/*
+*.cache
+*/**/obj/*
+*/**/bin/*
+
+/**/.vs/*
+/**/packages/*
