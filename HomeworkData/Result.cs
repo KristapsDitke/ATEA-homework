@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using HomeworkServices;
 
 
 namespace HomeworkData
 {
-    public class Result
+    public class Result : IResult
     {
         [Key]
         public int Id { get; set; }

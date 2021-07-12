@@ -7,7 +7,7 @@ using HomeworkData;
 
 namespace HomeworkServices
 {
-    public class DbService
+    public class DbService : IDbService
     {
         protected readonly HomeworkDbContext _context;
         public DbService(HomeworkDbContext context)
@@ -15,12 +15,19 @@ namespace HomeworkServices
             _context = context;
         }
 
-        public void AddToDb(Result received)
+       public void AddToDb<T>(T received) where T : Result
         {
             _context.Results.Add(received);
+            _context.SaveChanges();
         }
 
-        public List<Result> GetAll()
+       public T GetById<T>(int id) where T : Result
+       {
+          var requiredResult = _context.Results.SingleOrDefault(result => result.Id == id);
+          return (T) requiredResult;
+       }
+
+       public IEnumerable<T> GetAll<T>() where T : Result
         {
             var allResults = new List<Result>();
 
@@ -29,8 +36,13 @@ namespace HomeworkServices
                 allResults.Add(result);
             }
 
-            return allResults;
+            return (IEnumerable<T>) allResults;
         }
 
+       public void DeleteById<T>(int id) where T : Result
+       {
+           _context.Results.Remove(_context.Results.SingleOrDefault(result => result.Id == id));
+           _context.SaveChanges();
+        }
     }
 }

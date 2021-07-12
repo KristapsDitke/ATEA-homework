@@ -19,12 +19,11 @@ namespace AteaHomework
                 var result = AddArgumentsService.GetResult(Console.ReadLine());
 
                 Console.WriteLine($"Sum of given parameters {result[0]} and {result[1]} is - {result[2]}");
-                Console.WriteLine("Uploading data to table ... wait");
+                Console.WriteLine("Uploading data to table ... please wait");
 
                 //Handling Server
                 var sumOfParameters = new Result();
                 sumOfParameters.Sum = result[2];
-                
                 dbAccess.AddToDb(sumOfParameters);
                 Console.WriteLine("Added to Table.");
 
@@ -35,14 +34,13 @@ namespace AteaHomework
             }
             finally
             {
-                Console.WriteLine("Data Stored:");
-                foreach (var a in dbAccess.GetAll())
+                Console.WriteLine("Data stored:");
+                foreach (var result in dbAccess.GetAll<Result>())
                 {
-                    Console.WriteLine(a.Sum);
+                    Console.WriteLine(result.Sum);
                 }
             }
             
-
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();
         }
