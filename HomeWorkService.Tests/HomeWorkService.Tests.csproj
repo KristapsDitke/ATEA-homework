@@ -49,16 +49,16 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddArgumentsTests.cs" />
+    <Compile Include="AddArgumentsServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HomeworkService\HomeworkService.csproj">
-      <Project>{2fdffb9e-9bde-405b-84c8-ae0c6c338e23}</Project>
-      <Name>HomeworkService</Name>
+    <ProjectReference Include="..\HomeworkServices\HomeworkServices.csproj">
+      <Project>{0f3089ae-523f-41ca-bed6-719b9fdbc495}</Project>
+      <Name>HomeworkServices</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

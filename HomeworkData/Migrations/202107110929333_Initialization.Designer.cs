@@ -7,13 +7,13 @@ namespace HomeworkData.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class Initialize : IMigrationMetadata
+    public sealed partial class Initialization : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Initialize));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initialization));
         
         string IMigrationMetadata.Id
         {
-            get { return "202107090613354_Initialize"; }
+            get { return "202107110929333_Initialization"; }
         }
         
         string IMigrationMetadata.Source

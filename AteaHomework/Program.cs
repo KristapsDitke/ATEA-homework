@@ -1,7 +1,8 @@
 ﻿using HomeworkData;
-using HomeworkParameters;
 using HomeworkService;
 using System;
+using HomeworkData.Migrations;
+using HomeworkServices;
 
 namespace AteaHomework
 {
@@ -9,40 +10,38 @@ namespace AteaHomework
     {
         static void Main(string[] args)
         {
-            using (var dbContext = new HomeworkDbContext())
+            DbService dbAccess = new DbService(new HomeworkDbContext());
+            try
             {
-                try
+                Console.WriteLine("Please enter two numbers separated by '/' :");
+                
+                //Inner logic as a Service
+                var result = AddArgumentsService.GetResult(Console.ReadLine());
+
+                Console.WriteLine($"Sum of given parameters {result[0]} and {result[1]} is - {result[2]}");
+                Console.WriteLine("Uploading data to table ... wait");
+
+                //Handling Server
+                var sumOfParameters = new Result();
+                sumOfParameters.Sum = result[2];
+                
+                dbAccess.AddToDb(sumOfParameters);
+                Console.WriteLine("Added to Table.");
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.GetType() + "\n\n" + e.Message + "\n\n" + e.StackTrace);
+            }
+            finally
+            {
+                Console.WriteLine("Data Stored:");
+                foreach (var a in dbAccess.GetAll())
                 {
-                    Console.WriteLine("Please enter two integer type parameters:");
-
-                    //HomeworkParameters is as potential outer source for parameters in this case solved as user input
-                    Console.Write("Parameter Nr.1 - ");
-                    var parameterOne = Parameters.GetParameter();
-                    Console.Write("Parameter Nr.2 - ");
-                    var parameterTwo = Parameters.GetParameter();
-
-                    //Inner logic as a Service
-                    var result = AddArguments.GetResult(parameterOne, parameterTwo);
-
-                    Console.WriteLine($"Sum of given parameters is - {result}");
-                    Console.WriteLine("Uploading data to table ... wait");
-
-                    //Handling Server
-                    var sumOfParameters = new Result();
-                    sumOfParameters.Sum = result;
-                    dbContext.Results.Add(sumOfParameters);
-
-                    Console.WriteLine("Added to Table.");
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.GetType() + "\n" + e.Message);
-                }
-                finally
-                {
-                    dbContext.SaveChanges();
+                    Console.WriteLine(a.Sum);
                 }
             }
+            
 
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();

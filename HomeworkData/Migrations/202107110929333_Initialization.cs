@@ -1,8 +1,9 @@
 ﻿namespace HomeworkData.Migrations
 {
+    using System;
     using System.Data.Entity.Migrations;
-
-    public partial class Initialize : DbMigration
+    
+    public partial class Initialization : DbMigration
     {
         public override void Up()
         {
@@ -10,9 +11,10 @@
                 "dbo.Results",
                 c => new
                     {
-                        Sum = c.Int(nullable: false, identity: true),
+                        Id = c.Int(nullable: false, identity: true),
+                        Sum = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.Sum);
+                .PrimaryKey(t => t.Id);
             
         }
         

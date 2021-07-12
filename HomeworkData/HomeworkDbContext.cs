@@ -1,10 +1,11 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 
 namespace HomeworkData
 {
-    public class HomeworkDbContext : DbContext
+    public class HomeworkDbContext : DbContext, IDisposable
     {
-        public HomeworkDbContext() : base("ResultTable")
+        public HomeworkDbContext() : base("TableOfResults")
         {
 
         }
