@@ -1,15 +1,13 @@
-﻿using System;
+﻿using HomeworkData;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HomeworkData;
 
 namespace HomeworkServices
 {
     public class DbService : IDbService
     {
         protected readonly HomeworkDbContext _context;
+        
         public DbService(HomeworkDbContext context)
         {
             _context = context;

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using HomeworkServices;
-using Microsoft.SqlServer.Server;
 
 namespace HomeworkService
 {
@@ -30,6 +28,7 @@ namespace HomeworkService
         {
             var intDataList = new List<int>();
             int sum = 0;
+
             foreach (string part in received)
             {
                 if (Int32.TryParse(part.Trim(), out int parameter))
@@ -44,7 +43,6 @@ namespace HomeworkService
             }
 
             intDataList.Add(sum);
-
             return intDataList;
         }
     }

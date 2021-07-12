@@ -3,9 +3,9 @@ using System.Data.Entity;
 
 namespace HomeworkData
 {
-    public class HomeworkDbContext : DbContext, IDisposable
+    public class HomeworkDbContext : DbContext, IDisposable, IDbContext
     {
-        public HomeworkDbContext() : base("TableOfResults")
+        public HomeworkDbContext() : base(("TableOfResults"))
         {
 
         }

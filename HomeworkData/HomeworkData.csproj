@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HomeworkDbContext.cs" />
+    <Compile Include="IDbContext.cs" />
     <Compile Include="IResult.cs" />
     <Compile Include="Migrations\202107110929333_Initialization.cs" />
     <Compile Include="Migrations\202107110929333_Initialization.designer.cs">
