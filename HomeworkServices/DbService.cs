@@ -13,33 +13,28 @@ namespace HomeworkServices
             _context = context;
         }
 
-       public void AddToDb<T>(T received) where T : Result
+       public void AddToDb<T>(T received) where T : Element
         {
-            _context.Results.Add(received);
+            _context.Set<T>().Add(received);
             _context.SaveChanges();
         }
 
-       public T GetById<T>(int id) where T : Result
+       public T GetById<T>(int id) where T : Element
        {
-          var requiredResult = _context.Results.SingleOrDefault(result => result.Id == id);
-          return (T) requiredResult;
+          var requiredResult = _context.Set<T>().SingleOrDefault(result => result.Id == id);
+          return requiredResult;
        }
 
-       public IEnumerable<T> GetAll<T>() where T : Result
+       public IEnumerable<T> GetAll<T>() where T : Element
         {
-            var allResults = new List<Result>();
-
-            foreach (var result in _context.Results)
-            {
-                allResults.Add(result);
-            }
-
-            return (IEnumerable<T>) allResults;
+            return _context.Set<T>().ToList();
         }
 
-       public void DeleteById<T>(int id) where T : Result
+       public void DeleteById<T>(int id) where T : Element
        {
-           _context.Results.Remove(_context.Results.SingleOrDefault(result => result.Id == id));
+           var item = _context.Set<T>().SingleOrDefault(result => result.Id == id);
+           if (item == null) return;
+           _context.Set<T>().Remove(item);
            _context.SaveChanges();
         }
     }

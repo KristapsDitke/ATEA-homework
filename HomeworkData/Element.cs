@@ -1,11 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using HomeworkServices;
 
-
 namespace HomeworkData
 {
-    public class Result : Element
+    public abstract class Element : IElement
     {
-        public int Sum { get; set; }
+        [Key]
+        public int Id { get; set; }
     }
 }

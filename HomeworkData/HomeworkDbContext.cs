@@ -3,7 +3,7 @@ using System.Data.Entity;
 
 namespace HomeworkData
 {
-    public class HomeworkDbContext : DbContext, IDisposable, IDbContext
+    public class HomeworkDbContext : DbContext, IDisposable
     {
         public HomeworkDbContext() : base(("TableOfResults"))
         {

@@ -51,9 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Element.cs" />
     <Compile Include="HomeworkDbContext.cs" />
-    <Compile Include="IDbContext.cs" />
-    <Compile Include="IResult.cs" />
+    <Compile Include="IElement.cs" />
     <Compile Include="Migrations\202107110929333_Initialization.cs" />
     <Compile Include="Migrations\202107110929333_Initialization.designer.cs">
       <DependentUpon>202107110929333_Initialization.cs</DependentUpon>

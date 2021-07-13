@@ -1,6 +1,6 @@
 ﻿namespace HomeworkServices
 {
-    public interface IResult
+    public interface IElement
     {
         int Id { get; set; }
     }

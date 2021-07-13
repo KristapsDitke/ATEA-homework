@@ -55,10 +55,7 @@ namespace AteaHomework
             Console.WriteLine("\nEnter id for value to remove:");
             if (int.TryParse(Console.ReadLine(), out int id))
             {
-                if (dbAccess.GetById<Result>(id) != null)
-                {
-                    dbAccess.DeleteById<Result>(id);
-                }
+                dbAccess.DeleteById<Result>(id);
             }
         }
 
